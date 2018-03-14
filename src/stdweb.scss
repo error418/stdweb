@@ -1,0 +1,64 @@
+$lineCount: 60;
+$lineCharCount: 80;
+$lineCharPrintSpeed: 0.75;
+$backgroundColor: #FFF;
+$cursorColor: #000;
+
+$lineHeight: (100 / $lineCount);
+
+
+@keyframes stdweb_printLine {
+    from {
+        height: (100-$lineHeight)+vh;
+        top: 0vh;
+    }
+    to {
+        height: 0vh;
+        top: 100vh;
+    }
+}
+
+@keyframes stdweb_printChar {
+    from {
+        left: 0vw;
+        width: 100vw;
+    }
+    to {
+        left: 100vw;
+        width: 0vw;
+    }
+}
+
+div#stdweb {
+    z-index: 90000;
+    position: absolute;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
+    margin-top: $lineHeight+vh;
+    overflow: visible;
+    
+    background-color: $backgroundColor;
+    
+    animation: stdweb_printLine ($lineCount * $lineCharPrintSpeed)+s steps($lineCount);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    &::before {
+        z-index: 90001;
+        display:block;
+        content: "";
+        min-height: $lineHeight+vh;
+        //border-left: ((100 / $lineCount)*0.7)+vh solid #000;
+        position: relative;
+        left: 0px;
+        right: 0px;
+        top: -$lineHeight+vh;
+        overflow: hidden;
+        
+        background-color: $backgroundColor;
+        
+        animation: stdweb_printChar $lineCharPrintSpeed+s steps($lineCharCount);
+        animation-iteration-count: infinite;
+    }
+}
