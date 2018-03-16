@@ -20,7 +20,7 @@ Make it look like your website is printed line by line using just pure css!
 
 ### Customize
 
-You can override some sass-variables to customize the behaviour. Variables are defined and documented in [src/_variables.scss](src/variables.scss)
+You can override some sass-variables to customize the behaviour. Variables are defined and documented in [src/_variables.scss](src/_variables.scss)
 
 ### Building
 
