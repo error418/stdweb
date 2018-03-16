@@ -4,11 +4,10 @@
   "description": "prints you website line for line",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp watch",
     "build": "gulp"
   },
-  "author": "",
+  "author": "Michael Gerbig",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
