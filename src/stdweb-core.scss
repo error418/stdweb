@@ -1,3 +1,5 @@
+$stdweb_lineHeight: (100 / $stdweb_lineCount);
+
 @keyframes stdweb_printLine {
     from {
         top: 0%;
@@ -12,7 +14,7 @@
         left: 0%;
     }
     to {
-        left: calc(100% + #{$cursorTrailSize});
+        left: calc(100% + #{$stdweb_cursorTrailSize});
     }
 }
 
@@ -27,7 +29,7 @@ div.stdweb {
     bottom: 0px;
     left: 0px;
     
-    animation: stdweb_printLine ($lineCount * $lineCharPrintSpeed)+s steps($lineCount);
+    animation: stdweb_printLine ($stdweb_lineCount * $stdweb_lineCharPrintSpeed)+s steps($stdweb_lineCount);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     
@@ -35,9 +37,9 @@ div.stdweb {
         position: absolute;
         display: block;
 
-        background-color: $backgroundColor;
+        background-color: $stdweb_backgroundColor;
 
-        top: $lineHeight+vh;
+        top: $stdweb_lineHeight+vh;
         bottom: 0px;
         width: 100%;
 
@@ -47,27 +49,27 @@ div.stdweb {
     .stdweb-line {
         position: absolute;
         display:block;
-        height: $lineHeight+vh;
+        height: $stdweb_lineHeight+vh;
         left: 0px;
-        right: -$cursorTrailSize;
+        right: -$stdweb_cursorTrailSize;
         top: 0px;
         overflow: visible;
         
-        background-color: $backgroundColor;
+        background-color: $stdweb_backgroundColor;
         
-        animation: stdweb_printChar $lineCharPrintSpeed+s steps($lineCharCount);
+        animation: stdweb_printChar $stdweb_lineCharPrintSpeed+s steps($stdweb_lineCharCount);
         animation-iteration-count: infinite;
         
-        border-left: 5px solid $cursorColor;
+        border-left: 5px solid $stdweb_cursorColor;
 
         &.stdweb-trail:before {
             position: absolute;
             display: block;
             top: 0px;
-            height: $lineHeight+vh;
-            width: $cursorTrailSize;
-            left: -$cursorTrailSize;
-            background: linear-gradient(to right, rgba(0,0,0,0), rgba($cursorColor, 0.25));            
+            height: $stdweb_lineHeight+vh;
+            width: $stdweb_cursorTrailSize;
+            left: -$stdweb_cursorTrailSize;
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba($stdweb_cursorColor, 0.25));            
 
             content: '';
         }
