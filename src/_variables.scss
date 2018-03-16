@@ -1,0 +1,9 @@
+$lineCount: 60 !default;
+$lineCharCount: 20 !default;
+$lineCharPrintSpeed: 0.2 !default;
+$backgroundColor: black !default;
+$cursorColor: rgb(8, 118, 20) !default;
+
+$lineHeight: (100 / $lineCount) !default;
+
+$cursorTrailSize: 100px !default;
