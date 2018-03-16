@@ -1,0 +1,17 @@
+// number of lines spread across the visible height of your page
+$stdweb_lineCount: 60 !default;
+
+// number of "characters" across the visible width of your page
+$stdweb_lineCharCount: 20 !default;
+
+// time it takes in seconds to write a line
+$stdweb_lineCharPrintSpeed: 0.2 !default;
+
+// the background color of the blank terminal, which will be "overwritten" with your content
+$stdweb_backgroundColor: black !default;
+
+// the color of the terminal cursor
+$stdweb_cursorColor: rgb(8, 118, 20) !default;
+
+// the width of the cursor trail
+$stdweb_cursorTrailSize: 100px !default;

@@ -1,0 +1,17 @@
+{
+  "name": "stdweb",
+  "version": "1.0.0",
+  "description": "prints you website line for line",
+  "main": "index.js",
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp"
+  },
+  "author": "Michael Gerbig",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0"
+  }
+}

@@ -1,0 +1,78 @@
+$stdweb_lineHeight: (100 / $stdweb_lineCount);
+
+@keyframes stdweb_printLine {
+    from {
+        top: 0%;
+    }
+    to {
+        top: 100%;
+    }
+}
+
+@keyframes stdweb_printChar {
+    from {
+        left: 0%;
+    }
+    to {
+        left: calc(100% + #{$stdweb_cursorTrailSize});
+    }
+}
+
+div.stdweb {
+    position: absolute;
+    overflow: hidden;
+    
+    width: 100%;
+    height: auto;
+
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    
+    animation: stdweb_printLine ($stdweb_lineCount * $stdweb_lineCharPrintSpeed)+s steps($stdweb_lineCount);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    
+    &:after {
+        position: absolute;
+        display: block;
+
+        background-color: $stdweb_backgroundColor;
+
+        top: $stdweb_lineHeight+vh;
+        bottom: 0px;
+        width: 100%;
+
+        content: '';
+    }
+
+    .stdweb-line {
+        position: absolute;
+        display:block;
+        height: $stdweb_lineHeight+vh;
+        left: 0px;
+        right: -$stdweb_cursorTrailSize;
+        top: 0px;
+        overflow: visible;
+        
+        background-color: $stdweb_backgroundColor;
+        
+        animation: stdweb_printChar $stdweb_lineCharPrintSpeed+s steps($stdweb_lineCharCount);
+        animation-iteration-count: infinite;
+        
+        border-left: 5px solid $stdweb_cursorColor;
+
+        &.stdweb-trail:before {
+            position: absolute;
+            display: block;
+            top: 0px;
+            height: $stdweb_lineHeight+vh;
+            width: $stdweb_cursorTrailSize;
+            left: -$stdweb_cursorTrailSize;
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba($stdweb_cursorColor, 0.25));            
+
+            content: '';
+        }
+    }
+
+}
