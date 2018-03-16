@@ -6,59 +6,80 @@ $cursorColor: #000;
 
 $lineHeight: (100 / $lineCount);
 
+$cursorTrailSize: 100px;
+
 
 @keyframes stdweb_printLine {
     from {
-        height: (100-$lineHeight)+vh;
-        top: 0vh;
+        top: 0%;
     }
     to {
-        height: 0vh;
-        top: 100vh;
+        top: 100%;
     }
 }
 
 @keyframes stdweb_printChar {
     from {
-        left: 0vw;
-        width: 100vw;
+        left: 0%;
     }
     to {
-        left: 100vw;
-        width: 0vw;
+        left: calc(100% + #{$cursorTrailSize});
     }
 }
 
-div#stdweb {
-    z-index: 90000;
+div.stdweb {
     position: absolute;
-    width: 100vw;
-    top: 0px;
-    left: 0px;
-    margin-top: $lineHeight+vh;
-    overflow: visible;
+    overflow: hidden;
     
-    background-color: $backgroundColor;
+    width: 100%;
+    height: auto;
+
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
     
     animation: stdweb_printLine ($lineCount * $lineCharPrintSpeed)+s steps($lineCount);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    
+    &:after {
+        position: absolute;
+        display: block;
 
-    &::before {
-        z-index: 90001;
+        background-color: $backgroundColor;
+
+        top: $lineHeight+vh;
+        bottom: 0px;
+        width: 100%;
+
+        content: '';
+    }
+
+    .stdweb-line {
+        position: absolute;
         display:block;
-        content: "";
-        min-height: $lineHeight+vh;
-        //border-left: ((100 / $lineCount)*0.7)+vh solid #000;
-        position: relative;
+        height: $lineHeight+vh;
         left: 0px;
-        right: 0px;
-        top: -$lineHeight+vh;
-        overflow: hidden;
+        right: -$cursorTrailSize;
+        top: 0px;
+        overflow: visible;
         
         background-color: $backgroundColor;
         
         animation: stdweb_printChar $lineCharPrintSpeed+s steps($lineCharCount);
         animation-iteration-count: infinite;
+        
+        &.stdweb-trail:before {
+            position: absolute;
+            display: block;
+            top: 0px;
+            height: $lineHeight+vh;
+            width: $cursorTrailSize;
+            left: -$cursorTrailSize;
+            background: linear-gradient(to right, rgba(255,0,0,0), $cursorColor);            
+
+            content: '';
+        }
     }
+
 }
