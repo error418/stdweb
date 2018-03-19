@@ -2,6 +2,10 @@
 
 Make it look like your website is printed line by line using just pure css!
 
+## Compatibility
+
+All features of stdweb work on Chrome. Internet Explorer is partially supported (Maybe a good task for a pull request? ;) )
+
 ## Usage
 
 1. Add stdweb to you page stylesheets.
